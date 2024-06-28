@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Dipanshu Kumar</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        #intro {
+            text-align: center;
+            padding: 100px 20px;
+            color: #fff;
+            background: #007BFF;
+        }
+        #intro h1 {
+            font-size: 3em;
+            color: #fff;
+            margin-bottom: 20px;
+            animation: slideIn 1s ease-out;
+        }
+        #intro p {
+            font-size: 1.1em;
+            color: #fff;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        #intro a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .actions {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .actions li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #0056b3;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #004494;
+        }
+
+        .post {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 40px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .post header {
+            margin-bottom: 20px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .post .image {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            border-radius: 5px;
+            overflow: hidden;
+            animation: zoomIn 0.5s ease-out;
+        }
+
+        .post .image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post .actions {
+            text-align: center;
+        }
+
+        .post .actions .button {
+            padding: 10px 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        #footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            animation: slideInUp 1s ease-out;
+        }
+
+        #footer h3 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        #footer p,
+        #footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        #footer a:hover {
+            color: #fff;
+        }
+
+        #footer .icons a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        #footer .icons a:hover {
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        #copyright {
+            background-color: #222;
+            color: #ccc;
+            padding: 10px 0;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        #copyright a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        #copyright a:hover {
+            color: #fff;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="is-preload">
+
+<div id="wrapper" class="fade-in">
+
+    <div id="intro">
+        <h1>Hi, I am<br />
+            DIPANSHU KUMAR</h1>
+        <p>A dedicated data analyst proficient in Excel, SQL, Python, and Tableau.<br> With a passion for transforming data into actionable insights and driving business growth through informed decision-making.</p>
+        <ul class="actions">
+            <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Explore More</a></li>
+        </ul>
+    </div>
+
+    <header id="header">
+        <a href="index.html" class="logo">Dipanshu Kumar</a>
+    </header>
+
+    <nav id="nav">
+        <ul class="links">
+            <li id="projects-link" class="active"><a href="index.html">Projects</a></li>
+            <li id="resume-link"><a href="#resume">Resume</a></li>
+        </ul>
+        <ul class="icons">
+            <li><a href="https://www.linkedin.com/in/dipanshu-kumar-61a21322a/"target="_blank" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+            <li><a href="https://github.com/DipanshuK2003"target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+        </ul>
+    </nav>
+
+    <div id="main">
+        <section id="projects">
+            <article class="post">
+                <header>
+                    <h2><a href="https://github.com/DipanshuK2003/Sales_Analysis_Of_A_Clothing_Store/tree/main" target="_blank">Data Analysis Using Excel</a></h2>
+                    <p>A project that involves annual sales analysis. Tasks performed include data cleaning, processing, analysis, visualization, and reporting.</p>
+                </header>
+                <a href="https://github.com/DipanshuK2003/Sales_Analysis_Of_A_Clothing_Store/tree/main" target="_blank" class="image">
+                    <img src="images/clothes.jpeg" alt="" />
+                </a>
+                <ul class="actions special">
+                    <li><a href="https://github.com/DipanshuK2003/Sales_Analysis_Of_A_Clothing_Store/tree/main" target="_blank" class="button large">View Project</a></li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="resume" style="display: none;">
+            <div class="post">
+                <header>
+                    <h2>This is Dipanshu Kumar's Resume</h2>
+                    <p>You can upload your resume content here.</p>
+                </header>
+            </div>
+        </section>
+    </div>
+
+    <footer id="footer">
+        <section class="split contact">
+            <section class="alt">
+                <h3>Location</h3>
+                <p>New Delhi, India</p>
+            </section>
+            <section>
+                <h3>Phone</h3>
+                <p>+91 7303376980</p>
+            </section>
+            <section>
+                <h3>Email</h3>
+                <p>kayhiusy@gmail.com</p>
+            </section>
+            <section>
+                <h3>Social</h3>
+                <ul class="icons alt">
+                    <li><a href="https://www.linkedin.com/in/dipanshu-kumar-61a21322a/"target="_blank" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+                    <li><a href="https://github.com/DipanshuK2003"target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+                </ul>
+            </section>
+        </section>
+    </footer>
+
+    <!-- Copyright -->
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const projectsLink = document.getElementById('projects-link');
+        const resumeLink = document.getElementById('resume-link');
+        const mainElement = document.getElementById('main');
+
+        function updateActiveLink() {
+            if (window.location.hash === '#resume') {
+                projectsLink.classList.remove('active');
+                resumeLink.classList.add('active');
+                document.getElementById('projects').style.display = 'none';
+                document.getElementById('resume').style.display = 'block';
+            } else {
+                resumeLink.classList.remove('active');
+                projectsLink.classList.add('active');
+                document.getElementById('projects').style.display = 'block';
+                document.getElementById('resume').style.display = 'none';
+            }
+        }
+
+        window.addEventListener('hashchange', updateActiveLink);
+        updateActiveLink();
+    });
+</script>
+
+</body>
+</html>
