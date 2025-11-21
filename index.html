@@ -23,6 +23,14 @@
             max-width: 100% !important;
         }
 
+        /* HIDE TEMPLATE HEADER/NAV/MENU */
+        #header,
+        #nav,
+        .menu,
+        #menu {
+            display: none !important;
+        }
+
         /* Dark Theme Variables */
         :root {
             --bg-primary: #0a0a0a;
@@ -591,8 +599,17 @@
                 padding: 0 20px 40px 20px;
             }
 
+            /* MOBILE FOOTER - EVERYTHING CENTERED */
             .footer-section {
-                text-align: center;
+                text-align: center !important;
+            }
+
+            .footer-section h3 {
+                text-align: center !important;
+            }
+
+            .footer-section p {
+                text-align: center !important;
             }
 
             .footer-icons {
@@ -858,4 +875,3 @@
 
 </body>
 </html>
-
