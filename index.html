@@ -7,73 +7,301 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
-        /* Add your custom styles here */
+        /* FORCE OVERRIDE TEMPLATE STYLES */
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow-x: hidden !important;
+        }
+
+        #wrapper {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        /* Dark Theme Variables */
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #1e1e1e;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent-primary: #00d4ff;
+            --accent-hover: #00a8cc;
+            --border-color: #333;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
         }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Intro Section */
         #intro {
             text-align: center;
-            padding: 100px 20px;
-            color: #fff;
-            background: #007BFF;
-        }
-        #intro h1 {
-            font-size: 3em;
-            color: #fff;
-            margin-bottom: 20px;
-            animation: slideIn 1s ease-out;
-        }
-        #intro p {
-            font-size: 1.1em;
-            color: #fff;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-        #intro a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .actions {
-            list-style: none;
-            padding: 0;
+            padding: 80px 20px 100px;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
             margin: 0;
         }
-        .actions li {
-            display: inline-block;
-            margin-right: 10px;
+
+        #intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
         }
-        .button {
-            display: inline-block;
-            background-color: #0056b3;
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 5px;
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            border: 4px solid var(--accent-primary);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            animation: fadeInScale 1.2s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        #intro h1 {
+            font-size: 3.5em;
+            color: var(--text-primary);
+            margin-bottom: 40px;
+            animation: glowIn 1.5s ease-out;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        @keyframes fadeInScale {
+            0% { 
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% { 
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes glowIn {
+            0% { 
+                transform: translateY(-30px);
+                opacity: 0;
+                text-shadow: 0 0 0 rgba(0, 212, 255, 0);
+            }
+            100% { 
+                transform: translateY(0);
+                opacity: 1;
+                text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            }
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .nav-btn {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            padding: 14px 28px;
+            border-radius: 30px;
             text-decoration: none;
-            transition: background-color 0.3s ease;
+            font-weight: bold;
+            font-size: 0.95em;
+            border: 2px solid var(--accent-primary);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+            cursor: pointer;
         }
-        .button:hover {
-            background-color: #004494;
+
+        .nav-btn:hover {
+            background: var(--accent-primary);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Social Icons in Intro */
+        .social-icons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .social-icons a {
+            color: var(--text-secondary);
+            font-size: 1.8em;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-primary);
+            transform: translateY(-5px);
+        }
+
+        /* Full-width Sections */
+        section {
+            width: 100% !important;
+            padding: 80px 20px;
+            box-sizing: border-box;
+            margin: 0 !important;
+        }
+
+        #about {
+            background: var(--bg-secondary);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        #about h2,
+        #skills h2,
+        #resume h2,
+        .projects-header {
+            text-align: center;
+            color: var(--accent-primary);
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+        
+        #about p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: var(--bg-primary);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .skills-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .skill-tag {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border: 2px solid transparent;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            background: var(--accent-primary);
+            color: #000;
+            border-color: var(--accent-primary);
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Projects Section */
+        #projects-section {
+            background: var(--bg-secondary);
+            width: 100% !important;
+            padding: 80px 20px;
+        }
+
+        .projects-header {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .project-count {
+            background: var(--accent-primary);
+            color: #000;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.7em;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        #main {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .post {
-            background-color: #fff;
+            background-color: var(--bg-card);
             padding: 20px;
             margin-bottom: 40px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
         }
 
         .post:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3);
+            border-color: var(--accent-primary);
         }
 
         .post header {
@@ -81,11 +309,25 @@
             animation: fadeIn 0.5s ease-out;
         }
 
+        .post h2 a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .post h2 a:hover {
+            color: var(--accent-primary);
+        }
+
+        .post p {
+            color: var(--text-secondary);
+        }
+
         .post .image {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            border-radius: 5px;
+            padding-bottom: 56.25%;
+            border-radius: 8px;
             overflow: hidden;
             animation: zoomIn 0.5s ease-out;
         }
@@ -97,74 +339,208 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
         }
 
-        .post .actions {
-            text-align: center;
+        .post:hover .image img {
+            transform: scale(1.05);
         }
 
-        .post .actions .button {
-            padding: 10px 20px;
+        .actions {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .actions li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--accent-primary);
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 212, 255, 0.5);
+        }
+
+        .button.large {
+            padding: 12px 28px;
+            font-size: 0.95em;
+        }
+
+        .tech-stack {
+            color: var(--accent-primary);
+            font-weight: bold;
             font-size: 0.9em;
             margin-top: 10px;
         }
 
-        #footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
+        /* Resume Download Section */
+        #resume {
+            background: var(--bg-primary);
+            animation: fadeIn 1s ease-out;
             text-align: center;
-            animation: slideInUp 1s ease-out;
         }
 
-        #footer h3 {
-            color: #fff;
-            margin-bottom: 10px;
+        .resume-download-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background: var(--bg-card);
+            border-radius: 15px;
+            border: 2px solid var(--accent-primary);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
         }
 
-        #footer p,
-        #footer a {
-            color: #ccc;
+        .resume-download-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .download-icon {
+            font-size: 4em;
+            color: var(--accent-primary);
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .resume-download-container p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            margin-bottom: 25px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: var(--accent-primary);
+            color: #000;
+            padding: 16px 40px;
+            border-radius: 30px;
             text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
         }
 
-        #footer a:hover {
-            color: #fff;
+        .download-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.6);
         }
 
-        #footer .icons a {
-            color: #ccc;
+        /* FOOTER - FORCE FULL WIDTH */
+        #footer {
+            background: var(--bg-secondary) !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 80px 0 0 0 !important;
+            margin: 0 !important;
+            animation: fadeIn 1s ease-out;
+            box-sizing: border-box !important;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px 60px 40px;
+        }
+
+        .footer-section {
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-primary);
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            color: var(--text-secondary);
+            font-size: 1em;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
             text-decoration: none;
-            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-primary);
+        }
+
+        .footer-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 0;
+            align-items: center;
+        }
+
+        .footer-icons a {
+            color: var(--text-secondary);
             font-size: 1.5em;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
         }
 
-        #footer .icons a:hover {
-            color: #fff;
+        .footer-icons a:hover {
+            color: var(--accent-primary);
             transform: translateY(-3px);
         }
 
+        /* COPYRIGHT - FORCE FULL WIDTH */
         #copyright {
-            background-color: #222;
-            color: #ccc;
-            padding: 10px 0;
+            background: var(--bg-primary) !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 25px 40px !important;
+            margin: 0 !important;
             text-align: center;
             animation: fadeIn 1s ease-out;
+            box-sizing: border-box !important;
+        }
+
+        #copyright p {
+            margin: 0;
+            font-size: 0.9em;
+            color: var(--text-secondary);
         }
 
         #copyright a {
-            color: #007BFF;
+            color: var(--accent-primary);
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         #copyright a:hover {
-            color: #fff;
-        }
-
-        @keyframes slideIn {
-            0% { transform: translateY(-50px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+            color: var(--accent-hover);
         }
 
         @keyframes fadeIn {
@@ -177,9 +553,59 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        @keyframes slideInUp {
-            0% { transform: translateY(50px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+        /* Responsive Footer */
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 60px;
+                padding: 0 30px 50px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #intro h1 {
+                font-size: 2.5em;
+            }
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .nav-buttons {
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                padding: 12px 20px;
+                font-size: 0.85em;
+            }
+
+            .download-icon {
+                font-size: 3em;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 0 20px 40px 20px;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            .footer-icons {
+                justify-content: center;
+            }
+
+            #footer {
+                padding: 60px 0 0 0 !important;
+            }
+
+            #copyright {
+                padding: 20px !important;
+            }
         }
     </style>
 </head>
@@ -187,81 +613,229 @@
 
 <div id="wrapper" class="fade-in">
 
+    <!-- Intro Section -->
     <div id="intro">
-        <h1>Hi, I am<br />
-            DIPANSHU KUMAR</h1>
-        <p>A dedicated data analyst proficient in Excel, SQL, Python, and Tableau.<br> With a passion for transforming data into actionable insights and driving business growth through informed decision-making.</p>
-        <ul class="actions">
-            <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Explore More</a></li>
-        </ul>
+        <div class="profile-image">
+            <img src="images/me.jpeg" alt="Dipanshu Kumar" />
+        </div>
+        
+        <h1>Hi, I am<br />DIPANSHU KUMAR</h1>
+        
+        <div class="nav-buttons">
+            <a href="#about" class="nav-btn">About Me</a>
+            <a href="#skills" class="nav-btn">Technical Skills</a>
+            <a href="#projects-section" class="nav-btn">Projects</a>
+            <a href="#resume" class="nav-btn">Resume</a>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/dipanshu-kumar-61a21322a/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a>
+            <a href="https://github.com/DipanshuK2003" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a>
+            <a href="https://public.tableau.com/app/profile/dipanshu.kumar1559" target="_blank" class="icon solid fa-chart-line"><span class="label">Tableau</span></a>
+        </div>
     </div>
 
-    <header id="header">
-        <a href="index.html" class="logo">Dipanshu Kumar</a>
-    </header>
+    <!-- About Me Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I'm a data analyst passionate about solving real-world problems with data. My work spans the entire analytics pipeline: cleaning messy datasets, building ETL workflows, conducting statistical analysis, and creating dashboards that tell compelling stories. Currently focused on machine learning and predictive analytics to deliver measurable business impact.
+        </p>
+    </section>
 
-    <nav id="nav">
-        <ul class="links">
-            <li id="projects-link" class="active"><a href="index.html">Projects</a></li>
-            <li id="resume-link"><a href="#resume">Resume</a></li>
-        </ul>
-        <ul class="icons">
-            <li><a href="https://www.linkedin.com/in/dipanshu-kumar-61a21322a/"target="_blank" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-            <li><a href="https://github.com/DipanshuK2003"target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-        </ul>
-    </nav>
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-container">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">BigQuery</span>
+            <span class="skill-tag">Excel</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Statistical Modeling</span>
+            <span class="skill-tag">ETL Pipelines</span>
+            <span class="skill-tag">Jupyter Notebook</span>
+            <span class="skill-tag">XGBoost</span>
+            <span class="skill-tag">Data Visualization</span>
+        </div>
+    </section>
 
-    <div id="main">
-        <section id="projects">
+    <!-- Projects Section -->
+    <section id="projects-section">
+        <h2 class="projects-header">
+            Featured Projects <span class="project-count">8</span>
+        </h2>
+
+        <div id="main">
+            <!-- Project 1: Customer Lifetime Value (CLV) Analysis -->
             <article class="post">
                 <header>
-                    <h2><a href="https://github.com/DipanshuK2003/Sales_Analysis_Of_A_Clothing_Store/tree/main" target="_blank">Data Analysis Using Excel</a></h2>
+                    <h2><a href="https://github.com/DipanshuK2003/Customer-Lifetime-Value-CLV-Analysis.git" target="_blank">Customer Lifetime Value (CLV) Analysis</a></h2>
+                    <p>A production-ready CLV analysis combining RFM segmentation and XGBoost modeling to predict future customer value, identify high-value segments, and deliver actionable ROI-driven strategies.</p>
+                    <p class="tech-stack">Tech Stack: XGBoost, Machine Learning, Python, PostgreSQL, Jupyter Notebook</p>
+                </header>
+                <a href="https://github.com/DipanshuK2003/Customer-Lifetime-Value-CLV-Analysis.git" target="_blank" class="image">
+                    <img src="images/Project thumbnails/customers.jpeg" alt="Customer Lifetime Value (CLV) Analysis" />
+                </a>
+                <ul class="actions special">
+                    <li><a href="https://github.com/DipanshuK2003/Customer-Lifetime-Value-CLV-Analysis.git" target="_blank" class="button large">View Project</a></li>
+                </ul>
+            </article>
+
+            <!-- Project 2: Netflix Data Analysis -->
+            <article class="post">
+                <header>
+                    <h2><a href="https://github.com/DipanshuK2003/Netflix-Data-Analysis.git" target="_blank">Netflix Data Analysis</a></h2>
+                    <p>An end-to-end analysis of 58,675 movies and 25 million+ ratings to uncover the key drivers of film quality, popularity, and audience reception.</p>
+                    <p class="tech-stack">Tech Stack: Statistical Modelling, Statistics, Python, PostgreSQL, Jupyter Notebook, Tableau</p>
+                </header>
+                <a href="https://github.com/DipanshuK2003/Netflix-Data-Analysis.git" target="_blank" class="image">
+                    <img src="images/Project thumbnails/netflix.jpeg" alt="Netflix Data Analysis" />
+                </a>
+                <ul class="actions special">
+                    <li><a href="https://github.com/DipanshuK2003/Netflix-Data-Analysis.git" target="_blank" class="button large">View Project</a></li>
+                </ul>
+            </article>
+
+            <!-- Project 3: Vendor Performance Analysis -->
+            <article class="post">
+                <header>
+                    <h2><a href="https://github.com/DipanshuK2003/Vendor-Performance-Analysis.git" target="_blank">Vendor Performance Analysis</a></h2>
+                    <p>Transformed vendor performance data into actionable insights, empowering procurement teams to make optimized, data-driven decisions.</p>
+                    <p class="tech-stack">Tech Stack: Statistics, Python, PostgreSQL, Jupyter Notebook, Tableau</p>
+                </header>
+                <a href="https://github.com/DipanshuK2003/Vendor-Performance-Analysis.git" target="_blank" class="image">
+                    <img src="images/Project thumbnails/vendors.jpeg" alt="Vendor Performance Analysis" />
+                </a>
+                <ul class="actions special">
+                    <li><a href="https://github.com/DipanshuK2003/Vendor-Performance-Analysis.git" target="_blank" class="button large">View Project</a></li>
+                </ul>
+            </article>
+
+            <!-- Project 4: Uber Data Analytics -->
+            <article class="post">
+                <header>
+                    <h2><a href="https://github.com/DipanshuK2003/Uber_Data_Analytics.git" target="_blank">Uber Data Analytics</a></h2>
+                    <p>An end-to-end analytics solution that processes raw Uber data via a Python ETL and STAR schema in BigQuery to power an interactive Tableau dashboard on key business metrics.</p>
+                    <p class="tech-stack">Tech Stack: Python, BigQuery, Jupyter Notebook, Tableau</p>
+                </header>
+                <a href="https://github.com/DipanshuK2003/Uber_Data_Analytics.git" target="_blank" class="image">
+                    <img src="images/Project thumbnails/uber.jpeg" alt="Uber Data Analytics" />
+                </a>
+                <ul class="actions special">
+                    <li><a href="https://github.com/DipanshuK2003/Uber_Data_Analytics.git" target="_blank" class="button large">View Project</a></li>
+                </ul>
+            </article>
+
+            <!-- Project 5: HR Analytics Dashboard -->
+            <article class="post">
+                <header>
+                    <h2><a href="https://github.com/DipanshuK2003/HR-Tableau-Dashboard.git" target="_blank">HR Analytics Dashboard</a></h2>
+                    <p>Designed to streamline HR analysis, this Tableau dashboard offers actionable insights into workforce composition, pay equity, and employee retention factors.</p>
+                    <p class="tech-stack">Tech Stack: Tableau</p>
+                </header>
+                <a href="https://github.com/DipanshuK2003/HR-Tableau-Dashboard.git" target="_blank" class="image">
+                    <img src="images/Project thumbnails/HR.jpeg" alt="HR Analytics Dashboard" />
+                </a>
+                <ul class="actions special">
+                    <li><a href="https://github.com/DipanshuK2003/HR-Tableau-Dashboard.git" target="_blank" class="button large">View Project</a></li>
+                </ul>
+            </article>
+
+            <!-- Project 6: Car Sales Analytics Dashboard -->
+            <article class="post">
+                <header>
+                    <h2><a href="https://github.com/DipanshuK2003/Car_Sales_Dashboard.git" target="_blank">Car Sales Analytics Dashboard</a></h2>
+                    <p>Developed an interactive dashboard for car sales data, performing end-to-end analysis on $371M in revenue to visualize YTD growth, dealer performance, and consumer trends.</p>
+                    <p class="tech-stack">Tech Stack: Tableau</p>
+                </header>
+                <a href="https://github.com/DipanshuK2003/Car_Sales_Dashboard.git" target="_blank" class="image">
+                    <img src="images/Project thumbnails/cars.jpeg" alt="Car Sales Analytics Dashboard" />
+                </a>
+                <ul class="actions special">
+                    <li><a href="https://github.com/DipanshuK2003/Car_Sales_Dashboard.git" target="_blank" class="button large">View Project</a></li>
+                </ul>
+            </article>
+
+            <!-- Project 7: Sales Dashboard For Super Market Shop -->
+            <article class="post">
+                <header>
+                    <h2><a href="https://github.com/DipanshuK2003/Sales_analysis_of_supermarket.git" target="_blank">Sales Dashboard For Super Market Shop</a></h2>
+                    <p>Transformed raw annual sales data into clear visualizations and reports to uncover customer behavior and drive sales growth.</p>
+                    <p class="tech-stack">Tech Stack: Excel</p>
+                </header>
+                <a href="https://github.com/DipanshuK2003/Sales_analysis_of_supermarket.git" target="_blank" class="image">
+                    <img src="images/Project thumbnails/sales.jpeg" alt="Sales Dashboard For Super Market Shop" />
+                </a>
+                <ul class="actions special">
+                    <li><a href="https://github.com/DipanshuK2003/Sales_analysis_of_supermarket.git" target="_blank" class="button large">View Project</a></li>
+                </ul>
+            </article>
+
+            <!-- Project 8: Vrinda Store Analysis -->
+            <article class="post">
+                <header>
+                    <h2><a href="https://github.com/DipanshuK2003/Sales_Analysis_Of_A_Clothing_Store/tree/main" target="_blank">Vrinda Store Analysis</a></h2>
                     <p>A project that involves annual sales analysis. Tasks performed include data cleaning, processing, analysis, visualization, and reporting.</p>
+                    <p class="tech-stack">Tech Stack: Excel</p>
                 </header>
                 <a href="https://github.com/DipanshuK2003/Sales_Analysis_Of_A_Clothing_Store/tree/main" target="_blank" class="image">
-                    <img src="images/clothes.jpeg" alt="" />
+                    <img src="images/Project thumbnails/clothes.jpeg" alt="Vrinda Store Analysis" />
                 </a>
                 <ul class="actions special">
                     <li><a href="https://github.com/DipanshuK2003/Sales_Analysis_Of_A_Clothing_Store/tree/main" target="_blank" class="button large">View Project</a></li>
                 </ul>
             </article>
-        </section>
+        </div>
+    </section>
 
-        <section id="resume" style="display: none;">
-            <div class="post">
-                <header>
-                    <h2>This is Dipanshu Kumar's Resume</h2>
-                    <p>You can upload your resume content here.</p>
-                </header>
+    <!-- Resume Download Section -->
+    <section id="resume">
+        <h2>Resume</h2>
+        <div class="resume-download-container">
+            <div class="download-icon">
+                <i class="fas fa-download"></i>
             </div>
-        </section>
-    </div>
+            <p>Download my resume to learn more about my experience, skills, and achievements.</p>
+            <a href="files/Dipanshu Kumar.pdf" download class="download-btn">
+                <i class="fas fa-file-download"></i> Download Resume
+            </a>
+        </div>
+    </section>
 
+    <!-- REDESIGNED FOOTER -->
     <footer id="footer">
-        <section class="split contact">
-            <section class="alt">
+        <div class="footer-content">
+            <div class="footer-section">
                 <h3>Location</h3>
                 <p>New Delhi, India</p>
-            </section>
-            <section>
+            </div>
+            <div class="footer-section">
                 <h3>Phone</h3>
                 <p>+91 7303376980</p>
-            </section>
-            <section>
+            </div>
+            <div class="footer-section">
                 <h3>Email</h3>
-                <p>kayhiusy@gmail.com</p>
-            </section>
-            <section>
+                <p><a href="mailto:kayhiusy@gmail.com">kayhiusy@gmail.com</a></p>
+            </div>
+            <div class="footer-section">
                 <h3>Social</h3>
-                <ul class="icons alt">
-                    <li><a href="https://www.linkedin.com/in/dipanshu-kumar-61a21322a/"target="_blank" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
-                    <li><a href="https://github.com/DipanshuK2003"target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-                </ul>
-            </section>
-        </section>
+                <div class="footer-icons">
+                    <a href="https://www.linkedin.com/in/dipanshu-kumar-61a21322a/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a>
+                    <a href="https://github.com/DipanshuK2003" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a>
+                    <a href="https://public.tableau.com/app/profile/dipanshu.kumar1559" target="_blank" class="icon solid fa-chart-line"><span class="label">Tableau</span></a>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <!-- Copyright -->
+    <!-- COPYRIGHT -->
+    <div id="copyright">
+        <p>&copy; 2025 Dipanshu Kumar. All rights reserved. | Built with 💻 and ☕</p>
+    </div>
+
 </div>
 
 <script src="assets/js/jquery.min.js"></script>
@@ -272,29 +846,14 @@
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 
+<!-- Fix for auto-scroll on page load -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const projectsLink = document.getElementById('projects-link');
-        const resumeLink = document.getElementById('resume-link');
-        const mainElement = document.getElementById('main');
-
-        function updateActiveLink() {
-            if (window.location.hash === '#resume') {
-                projectsLink.classList.remove('active');
-                resumeLink.classList.add('active');
-                document.getElementById('projects').style.display = 'none';
-                document.getElementById('resume').style.display = 'block';
-            } else {
-                resumeLink.classList.remove('active');
-                projectsLink.classList.add('active');
-                document.getElementById('projects').style.display = 'block';
-                document.getElementById('resume').style.display = 'none';
-            }
-        }
-
-        window.addEventListener('hashchange', updateActiveLink);
-        updateActiveLink();
-    });
+    // Prevent auto-scroll to hash on page load
+    if (window.location.hash) {
+        setTimeout(function() {
+            window.scrollTo(0, 0);
+        }, 1);
+    }
 </script>
 
 </body>
