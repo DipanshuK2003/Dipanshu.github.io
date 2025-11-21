@@ -23,12 +23,23 @@
             max-width: 100% !important;
         }
 
-        /* HIDE TEMPLATE HEADER/NAV/MENU */
+        /* HIDE TEMPLATE HEADER/NAV/MENU - COMPLETE NUCLEAR OPTION */
         #header,
         #nav,
         .menu,
-        #menu {
+        #menu,
+        .navPanelToggle,
+        #navPanelToggle,
+        .toggle,
+        [class*="navPanel"],
+        [id*="navPanel"],
+        button[aria-label*="Menu"],
+        .menu-toggle,
+        #menu-toggle {
             display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
         }
 
         /* Dark Theme Variables */
